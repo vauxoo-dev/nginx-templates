@@ -1,0 +1,20 @@
+@import url(//fonts.googleapis.com/css?family=Lato);
+.o_logo {
+  display: inline-block;
+  font-size: 300%;
+}
+.o_logo  .o_logo_main { 
+    background-image: url(//www.odoo.com/openerp_website/static/src/img/assets/png/odoo_logo_rgb.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    color: rgba(255,255,255,0);
+    text-decoration: none;
+}
+.o_logo  .o_logo_app { 
+    text-decoration: none;
+    color: rgb(143,143,143);
+    font-family: Lato, Arial, sans-serif;
+    font-size: 50%;
+}
+
