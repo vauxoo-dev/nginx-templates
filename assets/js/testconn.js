@@ -4,7 +4,7 @@ function ping(url) {
     var startDate = new Date();
     var endDate = null;
     jQuery.ajax({
-      url: "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22" + encodedURL + "%22&format=json",
+      url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22" + encodedURL + "%22&format=json",
       type: "get",
       async: false,
       dataType: "json",
