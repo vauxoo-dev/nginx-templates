@@ -16,7 +16,7 @@
     -->
     <link href="assets/css/bootstrap.darkly.css" rel="stylesheet">
     <!-- Themes bootswatch -->
-    <link href="assets/css/bootswatch.css" rel="stylesheet">
+    <!-- link href="assets/css/bootswatch.css" rel="stylesheet" -->
 
     <!-- Custom styles for this template -->
     <link href="assets/css/sticky-footer.css" rel="stylesheet">
@@ -24,7 +24,10 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- script src="assets/js/ie-emulation-modes-warning.js"></script -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/testconn.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,6 +50,8 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="thumbnail">
+                  <div data-toggle="tooltip" class="status" title="Tooltip on bottom" data-placement="top">
+                  </div>
                   <a href="https://prod.lodigroup.com" class="btn btndefault">
                   <div class="caption">
                     <p><span class="o_logo"><span
@@ -58,6 +63,8 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="thumbnail">
+                  <div data-toggle="tooltip" class="status">
+                  </div>
                   <a href="https://test.lodigroup.com" class="btn btndefault">
                   <div class="caption">
                     <p><span class="o_logo"><span
@@ -71,7 +78,9 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="thumbnail">
-                  <a href="http://lodi61.test.lodigroup.com" class="btn btndefault">
+                  <div data-toggle="tooltip" class="status">
+                  </div>
+                  <a href="http://lodi61.test.lodigroup.com/web/webclient/home" class="btn btndefault">
                   <div class="caption">
                     <p><span class="o_logo"><span
                             class="o_logo_main">odoo</span><span
@@ -82,7 +91,9 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="thumbnail">
-                  <a href="http://apex61.test.lodigroup.com" class="btn btndefault">
+                  <div data-toggle="tooltip" class="status">
+                  </div>
+                  <a href="http://apex61.test.lodigroup.com/web/webclient/home" class="btn btndefault">
                   <div class="caption">
                     <p><span class="o_logo"><span
                             class="o_logo_main">odoo</span><span
@@ -95,7 +106,9 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                <div class="thumbnail">
-                  <a href="http://lodi.openerp.la" class="btn btndefault">
+                  <div data-toggle="tooltip" class="status">
+                  </div>
+                  <a href="http://lodi.openerp.la/web/webclient/home" class="btn btndefault">
                   <div class="caption">
                     <p><span class="o_logo"><span
                             class="o_logo_main">odoo</span><span
@@ -107,6 +120,8 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="thumbnail">
+                  <div data-toggle="tooltip" class="status">
+                  </div>
                 <a href="https://www.vauxoo.com" class="btn btndefault">
                   <div class="caption">
                     <p><span class="o_logo"><span
@@ -138,6 +153,27 @@
       </div>
     </div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--script src="assets/js/ie10-viewport-bug-workaround.js"></script -->
+    <script>
+
+      monitorServers = function (){
+            $(".thumbnail").each(function() {
+                  var txt_url = $(this).find(".btndefault").attr('href');
+                  response = ping(txt_url);
+                  if(response == null) {
+                    $(this).find(".status").css("background-image", "url(/assets/img/offline-icon-small.png)");
+                    $(this).find(".status").attr('title', "Could not connect to host");
+                  }
+                  else {
+                    $(this).find(".status").attr('title', "Test time: " + response);
+                  }
+                }
+              );
+            //$('.status').tooltip('show')
+            $('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+      }
+
+      window.setInterval(monitorServers, 10000);
+    </script>
   </body>
 </html>

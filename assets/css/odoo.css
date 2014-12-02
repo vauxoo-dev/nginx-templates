@@ -18,3 +18,13 @@
     font-size: 50%;
 }
 
+
+.status {
+    width: 20px;
+    height: 20px;
+    background-image: url(/assets/img/online-icon-small.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    float: right;
+}
